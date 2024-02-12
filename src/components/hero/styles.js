@@ -25,6 +25,11 @@ export const StyledHeader = styled("h2")(({ theme }) => ({
     lineHeight: "40px",
     paddingLeft: 0,
     width: "100%",
+    textAlign: "center",
+  },
+  [theme.breakpoints.down(450)]: {
+    width: "100%",
+    textAlign: "left",
   },
 }));
 
@@ -41,7 +46,12 @@ export const StyledText = styled("p")(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     paddingLeft: 0,
+    width: "420px",
+    margin: "1rem auto 0 auto",
+  },
+  [theme.breakpoints.down(450)]: {
     width: "100%",
+    textAlign: "left",
   },
 }));
 
@@ -56,5 +66,11 @@ export const StyledNameTag = styled("p")(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     paddingLeft: 0,
+    textAlign: "center",
+  },
+
+  [theme.breakpoints.down(450)]: {
+    width: "100%",
+    textAlign: "left",
   },
 }));
