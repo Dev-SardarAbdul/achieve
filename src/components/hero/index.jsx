@@ -12,13 +12,13 @@ import {
 } from "./styles";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Pagination, Autoplay, Virtual } from "swiper/core";
+import SwiperCore, { Autoplay, Virtual } from "swiper/core";
 import "swiper/swiper-bundle.min.css";
+import { data } from "./data";
 
 SwiperCore.use([Autoplay, Virtual]);
 
 function Hero() {
-  let swiperDemo = [1, 1, 1];
   const [disabledSlide, setDisabledSlide] = useState(1);
   const [activeSlide, setActiveSlide] = useState(1);
   const swiperRef = useRef();
@@ -35,8 +35,11 @@ function Hero() {
           slidesPerView={1}
           watchSlidesVisibility={true}
           navigation={false}
+          onSlideChange={(swiper) => {
+            setActiveSlide(swiper.activeIndex + 1);
+          }}
         >
-          {swiperDemo.map((item, index) => (
+          {data.map((item, index) => (
             <SwiperSlide key={index}>
               <Grid
                 spacing={2}
@@ -45,16 +48,12 @@ function Hero() {
                 alignItems="center"
               >
                 <Grid item lg={6}>
-                  <StyledImage src={womanImg} alt="Woman" />
+                  <StyledImage src={item.image} alt="Woman" />
                 </Grid>
                 <Grid item lg={6}>
-                  <StyledHeader>Real people, real progress</StyledHeader>
-                  <StyledText>
-                    “Vicki helped me. From the application to the approval, to
-                    the funding. She was with me through the whole process. She
-                    walked me through everything I needed to know and submit.”
-                  </StyledText>
-                  <StyledNameTag>— Becky C. member since 2021</StyledNameTag>
+                  <StyledHeader>{item.header}</StyledHeader>
+                  <StyledText>{item.text}</StyledText>
+                  <StyledNameTag>{item.person}</StyledNameTag>
                 </Grid>
               </Grid>
             </SwiperSlide>
@@ -66,21 +65,20 @@ function Hero() {
         <img
           src={prevImg}
           alt="Swiper arrow"
-          className={`${disabledSlide === 1 && "opacity-50"} swiper-arrow`}
+          className={` swiper-arrow`}
           draggable={false}
           onClick={() => {
-            swiperRef.current?.slidePrev();
-
-            if (activeSlide > 1) {
-              setActiveSlide((prev) => prev - 1);
-            }
-
-            if (disabledSlide === 3) {
-              setDisabledSlide(null);
+            if (swiperRef.current) {
+              swiperRef.current.slidePrev();
+              const newActiveSlide = Math.max(activeSlide - 1, 1);
+              setActiveSlide(newActiveSlide);
+              updatePagination(newActiveSlide);
+              if (disabledSlide === 3) {
+                setDisabledSlide(null);
+              }
             }
           }}
         />
-
         <PaginationWrapper>
           <PaginationItem className={`${activeSlide === 1 && "active"}`} />
           <PaginationItem className={`${activeSlide === 2 && "active"}`} />
@@ -90,15 +88,17 @@ function Hero() {
         <img
           src={nextImg}
           alt="Swiper arrow"
-          className={`${disabledSlide === 3 && "opacity-50"} swiper-arrow`}
+          className={`swiper-arrow`}
           draggable={false}
           onClick={() => {
-            swiperRef.current?.slideNext();
-            if (activeSlide < 3) {
-              setActiveSlide((prev) => prev + 1);
-            }
-            if (disabledSlide === 1) {
-              setDisabledSlide(null);
+            if (swiperRef.current) {
+              swiperRef.current.slideNext();
+              const newActiveSlide = Math.min(activeSlide + 1, 3);
+              setActiveSlide(newActiveSlide);
+              updatePagination(newActiveSlide);
+              if (disabledSlide === 1) {
+                setDisabledSlide(null);
+              }
             }
           }}
         />

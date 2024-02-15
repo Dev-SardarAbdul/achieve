@@ -20,12 +20,6 @@ body {
   cursor: pointer;
 }
 
-.opacity-50 {
-  opacity: 60%;
-  cursor: not-allowed;
-  transition: all ease-in-out 300ms;
-}
-
 .active {
   background-color: #3300ff !important;
 }
