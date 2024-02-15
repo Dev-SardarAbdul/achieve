@@ -11,6 +11,17 @@ export const StyledImage = styled("img")(({ theme }) => ({
   },
 }));
 
+export const PaginationWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    margin: 0,
+  },
+}));
+
 export const StyledHeader = styled("h2")(({ theme }) => ({
   width: "441px",
   fontWeight: 500,
