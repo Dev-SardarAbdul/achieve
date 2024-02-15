@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { womanImg,nextImg,prevImg } from "../../assets";
+import { womanImg, nextImg, prevImg } from "../../assets";
 import {
+  PaginationItem,
   PaginationWrapper,
   StyledHeader,
   StyledImage,
@@ -11,40 +12,32 @@ import {
 } from "./styles";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Autoplay,
-  Virtual,
-} from "swiper/core";
+import SwiperCore, { Pagination, Autoplay, Virtual } from "swiper/core";
 import "swiper/swiper-bundle.min.css";
 
-SwiperCore.use([Navigation, Pagination, Autoplay, Virtual]);
+SwiperCore.use([Autoplay, Virtual]);
 
 function Hero() {
   let swiperDemo = [1, 1, 1];
-
-  const renderCustomPagination = (swiper, current, total) => {
-    return `<span class="swiper-pagination-bullet">${current}</span>`;
-  };
+  const [disabledSlide, setDisabledSlide] = useState(1);
+  const [activeSlide, setActiveSlide] = useState(1);
+  const swiperRef = useRef();
 
   return (
     <div className="main-container">
       <Box sx={{ flexGrow: 1 }} marginTop={"5rem"}>
         <Swiper
-          spaceBetween={50}
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          onReachEnd={() => setDisabledSlide(3)}
+          onReachBeginning={() => setDisabledSlide(1)}
           slidesPerView={1}
           watchSlidesVisibility={true}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          }}
-          pagination={{
-            clickable: true,
-          }}
+          navigation={false}
         >
           {swiperDemo.map((item, index) => (
-            <SwiperSlide key={index} className="sample-slider">
+            <SwiperSlide key={index}>
               <Grid
                 spacing={2}
                 container
@@ -67,20 +60,49 @@ function Hero() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <Grid container justifyContent="center">
-          <Grid item lg={8}>
-            <div className="PaginationWrapper">
-              <div className="swiper-button-prev">
-                <img src={prevImg} alt="" />
-              </div>
-              <div className="swiper-button-next">
-                <img src={nextImg} alt="" />
-              </div>
-            </div>
-          </Grid>
-        </Grid>
-
       </Box>
+
+      <div className="swiper-pagination-main-div">
+        <img
+          src={prevImg}
+          alt="Swiper arrow"
+          className={`${disabledSlide === 1 && "opacity-50"} swiper-arrow`}
+          draggable={false}
+          onClick={() => {
+            swiperRef.current?.slidePrev();
+
+            if (activeSlide > 1) {
+              setActiveSlide((prev) => prev - 1);
+            }
+
+            if (disabledSlide === 3) {
+              setDisabledSlide(null);
+            }
+          }}
+        />
+
+        <PaginationWrapper>
+          <PaginationItem className={`${activeSlide === 1 && "active"}`} />
+          <PaginationItem className={`${activeSlide === 2 && "active"}`} />
+          <PaginationItem className={`${activeSlide === 3 && "active"}`} />
+        </PaginationWrapper>
+
+        <img
+          src={nextImg}
+          alt="Swiper arrow"
+          className={`${disabledSlide === 3 && "opacity-50"} swiper-arrow`}
+          draggable={false}
+          onClick={() => {
+            swiperRef.current?.slideNext();
+            if (activeSlide < 3) {
+              setActiveSlide((prev) => prev + 1);
+            }
+            if (disabledSlide === 1) {
+              setDisabledSlide(null);
+            }
+          }}
+        />
+      </div>
     </div>
   );
 }

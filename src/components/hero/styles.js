@@ -11,17 +11,6 @@ export const StyledImage = styled("img")(({ theme }) => ({
   },
 }));
 
-export const PaginationWrapper = styled("div")(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-
-  [theme.breakpoints.down("sm")]: {
-    width: "100%",
-    margin: 0,
-  },
-}));
-
 export const StyledHeader = styled("h2")(({ theme }) => ({
   width: "441px",
   fontWeight: 500,
@@ -84,4 +73,23 @@ export const StyledNameTag = styled("p")(({ theme }) => ({
     width: "100%",
     textAlign: "left",
   },
+}));
+
+export const PaginationWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "6px",
+
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    margin: 0,
+  },
+}));
+
+export const PaginationItem = styled("div")(({ theme }) => ({
+  width: "9px",
+  height: "9px",
+  borderRadius: "100px",
+  background: "#C0CBD8",
 }));
