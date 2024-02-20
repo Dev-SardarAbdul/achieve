@@ -1,10 +1,18 @@
 import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { womanImg, nextImg, prevImg } from "../../assets";
+import {
+  womanImg,
+  nextImg,
+  prevImg,
+  ratingProgress,
+  rating,
+  trust,
+} from "../../assets";
 import {
   PaginationItem,
   PaginationWrapper,
+  PilotWrapper,
   StyledHeader,
   StyledImage,
   StyledNameTag,

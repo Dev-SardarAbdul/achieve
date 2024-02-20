@@ -93,3 +93,13 @@ export const PaginationItem = styled("div")(({ theme }) => ({
   borderRadius: "100px",
   background: "#C0CBD8",
 }));
+
+
+export const PilotWrapper= styled("div")(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "6px",
+    
+     
+}));
