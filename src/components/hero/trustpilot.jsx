@@ -1,13 +1,7 @@
-import React, { useRef, useState } from "react";
-
+import React from "react";
 import { ratingProgress, rating, trust } from "../../assets";
-import { PaginationItem, PilotWrapper } from "./styles";
+import { PilotWrapper, TrustPilotDiv } from "./styles";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay, Virtual } from "swiper/core";
-import "swiper/swiper-bundle.min.css";
-import { data } from "./data";
- 
 function TrustPilot() {
   let ratingData = [
     {
@@ -25,33 +19,18 @@ function TrustPilot() {
   ];
 
   return (
-    <div className=" " style={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-    }}>
+    <div
+      className=" "
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
       <PilotWrapper>
-        <p
-          className=""
-          style={{
-            fontWeight: "bold",
-          }}
-        >
-          4.8 / 5.0{" "}
-        </p>
-        {ratingData.map((item, index) => (
-          <img
-            src={item.status == "completed" ? rating : ratingProgress}
-            alt="Rating progress"
-            className={`rating-progress`}
-            draggable={false}
-            key={index}
-          />
-        ))}
         <div
-          className="trustWrapper"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -59,6 +38,25 @@ function TrustPilot() {
             gap: "0.3rem",
           }}
         >
+          <p
+            className=""
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            4.8 / 5.0{" "}
+          </p>
+          {ratingData.map((item, index) => (
+            <img
+              src={item.status == "completed" ? rating : ratingProgress}
+              alt="Rating progress"
+              className={`rating-progress`}
+              draggable={false}
+              key={index}
+            />
+          ))}
+        </div>
+        <TrustPilotDiv className="trustWrapper">
           <p>with 10,350 reviews on</p>
 
           <img className="rating" src={trust} width={20} height={20} />
@@ -69,7 +67,7 @@ function TrustPilot() {
           >
             TrustPilot
           </p>
-        </div>
+        </TrustPilotDiv>
       </PilotWrapper>
     </div>
   );

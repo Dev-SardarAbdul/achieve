@@ -94,12 +94,21 @@ export const PaginationItem = styled("div")(({ theme }) => ({
   background: "#C0CBD8",
 }));
 
+export const PilotWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "6px",
 
-export const PilotWrapper= styled("div")(({ theme }) => ({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "6px",
-    
-     
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: "1rem",
+  },
+}));
+
+export const TrustPilotDiv = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "0.3rem",
 }));
