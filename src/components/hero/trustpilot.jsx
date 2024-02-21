@@ -1,6 +1,8 @@
 import React from "react";
 import { ratingProgress, rating, trust } from "../../assets";
-import { PilotWrapper, TrustPilotDiv } from "./styles";
+
+import { styled } from "@mui/system";
+
 
 function TrustPilot() {
   let ratingData = [
@@ -17,6 +19,25 @@ function TrustPilot() {
       status: "progress",
     },
   ];
+  
+   const PilotWrapper = styled("div")(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "6px",
+  
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      gap: "1rem",
+    },
+  }));
+  
+   const TrustPilotDiv = styled("div")(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "0.3rem",
+  }));
 
   return (
     <div
