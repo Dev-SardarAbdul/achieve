@@ -1,13 +1,13 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TrustPilot from "./components/hero/trustpilot";
+import HelpFunction from "./components/hero/helpFunction";
 
 function App() {
   return (
     <Router>
       <main>
         <Routes>
-          <Route path="/" element={<TrustPilot />} />
+          <Route path="/" element={<HelpFunction />} />
         </Routes>
       </main>
     </Router>
