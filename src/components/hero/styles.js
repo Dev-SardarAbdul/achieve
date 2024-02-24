@@ -114,11 +114,15 @@ export const ContactWrapper = styled("div")(({ theme }) => ({
 }));
 
 export const ContactCard = styled("div")(({ theme }) => ({
-  boxShadow: " 0px 8px 24px #10182817",
+  
+  boxShadow: '0px 3px 18px #10182817',
+
   borderRadius: "10px",
   height: "175px",
   width: "165px",
   padding: "5px",
+
+// 
 }));
 
 export const ContactCardWrapper = styled("div")(({ theme }) => ({

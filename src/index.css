@@ -16,31 +16,4 @@ body {
     padding: 0 1rem;
   }
 }
-
-.swiper-arrow {
-  cursor: pointer;
-}
-
-.active {
-  background-color: #3300ff !important;
-}
-
-.swiper-pagination-main-div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 900px;
-  margin-inline: auto;
-  margin-top: 1rem;
-  padding-left: 2.5rem;
-
-  @media (max-width: 1200px) {
-    padding-left: 0;
-  }
-  @media (max-width: 924px) {
-    width: 480px;
-  }
-  @media (max-width: 570px) {
-    width: 100%;
-  }
-}
+ 

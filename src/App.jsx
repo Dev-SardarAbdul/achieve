@@ -1,6 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HelpFunction from "./components/hero/helpFunction";
+import HelpFunction from "./pages/helpFunction";
 
 function App() {
   return (
