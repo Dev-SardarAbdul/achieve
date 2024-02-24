@@ -1,13 +1,13 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HelpFunction from "./pages/helpFunction";
+import DebtTools from "./pages/debtTools";
 
 function App() {
   return (
     <Router>
       <main>
         <Routes>
-          <Route path="/" element={<HelpFunction />} />
+          <Route path="/" element={<DebtTools />} />
         </Routes>
       </main>
     </Router>

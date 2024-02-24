@@ -8,7 +8,7 @@ import {
 } from "./styles.js";
 import { calendar, newfeature, tick, shuffle } from "../../assets/index.js";
 
-const Card = ({setdebtTool}) => {
+const Card = ({ setdebtTool }) => {
   const [activeCard, setActiveCard] = useState(null);
 
   let cardData = [
@@ -34,9 +34,9 @@ const Card = ({setdebtTool}) => {
     },
   ];
 
-  const handleCardClick = (index,item) => {
+  const handleCardClick = (index, item) => {
     setActiveCard(index);
-    setdebtTool(item.title)
+    setdebtTool(item.title);
   };
 
   return (
@@ -46,7 +46,7 @@ const Card = ({setdebtTool}) => {
           <ContactCard
             key={index}
             className={index === activeCard ? "active" : ""}
-            onClick={() => handleCardClick(index,item)}
+            onClick={() => handleCardClick(index, item)}
           >
             <ContactCardIcon
               src={item.icon}

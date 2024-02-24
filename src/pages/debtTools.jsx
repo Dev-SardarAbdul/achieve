@@ -1,11 +1,24 @@
 import React, { useState } from "react";
-import { MainWrapper } from "../components/hero/styles";
 import Card from "../components/card/card";
 import GreatStuffStore from "../components/greatStuffStore";
 import TextInput from "../components/input/textInput";
 import MainButton from "../components/button/MainButton";
 
-function HelpFunction() {
+import { styled } from "@mui/system";
+
+ const MainWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+
+  paddingTop:"1rem",
+  paddingBottom:"1rem",
+
+}));
+
+
+function DebtTools() {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const [isValidEmail, setIsValidEmail] = useState(false);
 
@@ -34,4 +47,4 @@ function HelpFunction() {
   );
 }
 
-export default HelpFunction;
+export default DebtTools;
