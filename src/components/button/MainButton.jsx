@@ -1,35 +1,38 @@
-import React, { Children } from "react";
+import React from "react";
 import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
 
-const StyledButton = styled(Button)(({ theme }) => ({
-  backgroundColor: "#EEF0F9",
-  color: "#616A7C",
+const StyledButton = styled(Button)(({ theme, isValidEmail }) => ({
+  backgroundColor: isValidEmail ? "#3300FF" : "#EEF0F9",
+  color:isValidEmail ? "#fff" : "#616A7C",
   fontSize: "18px",
   textTransform: "initial",
   fontWeight: 700,
   width: "350px",
-  "&:hover": {},
+  "&:hover": {
+  backgroundColor: isValidEmail ? "#3300FF" : "#EEF0F9",
+    
+  },
   [theme.breakpoints.down("sm")]: {
     width: "90%",
   },
 }));
 
-const MainButton = ({ children }) => {
+const MainButton = ({ children, submitData, isValidEmail,debtTool }) => {
+  console.log("isvalid0", isValidEmail)
   return (
-    <Box
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        width: "100%",
-      }}
-    >
-      <StyledButton>{children}</StyledButton>
+    <Box   style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'column',
+      width: '100%',
+    }}>
+      <StyledButton disabled={!isValidEmail} isValidEmail={isValidEmail} onClick={submitData}   >
+        {children}
+      </StyledButton>
     </Box>
   );
 };
-
 export default MainButton;

@@ -22,10 +22,9 @@ export const ContactCard = styled("div")(({ theme }) => ({
   height: "175px",
   width: "165px",
   padding: "5px",
-  
-  
-  '&.active': {
-    border: '1px solid  #007bff'
+
+  "&.active": {
+    border: "2px solid  #3300FF",
   },
   //
 }));

@@ -6,9 +6,9 @@ import {
   ContactCardTitle,
   ContactCardWrapper,
 } from "./styles.js";
-import { calendar, newfeature, tick, shuffle } from "../../assets";
+import { calendar, newfeature, tick, shuffle } from "../../assets/index.js";
 
-const Card = () => {
+const Card = ({setdebtTool}) => {
   const [activeCard, setActiveCard] = useState(null);
 
   let cardData = [
@@ -34,8 +34,9 @@ const Card = () => {
     },
   ];
 
-  const handleCardClick = (index) => {
+  const handleCardClick = (index,item) => {
     setActiveCard(index);
+    setdebtTool(item.title)
   };
 
   return (
@@ -45,12 +46,12 @@ const Card = () => {
           <ContactCard
             key={index}
             className={index === activeCard ? "active" : ""}
-            onClick={() => handleCardClick(index)}
+            onClick={() => handleCardClick(index,item)}
           >
             <ContactCardIcon
               src={item.icon}
               width={24}
-              height={item.title === "Find a debt fix" ? 28 : 24}
+              height={24}
               alt="icon"
             />
             <ContactCardTitle className="">{item.title}</ContactCardTitle>
