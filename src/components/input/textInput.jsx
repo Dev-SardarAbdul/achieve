@@ -15,14 +15,13 @@ const StyledInput = styled(TextField)(({ theme }) => ({
   },
 }));
 
-const TextInput = ({ isValidEmail, setIsValidEmail,setEmail }) => {
-  console.log("isValidEmail0", isValidEmail);
+const TextInput = ({ setIsValidEmail, setEmail }) => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const validateEmail = (event) => {
     const email = event.target.value;
     setIsValidEmail(emailRegex.test(email));
-    setEmail(email)
+    setEmail(email);
   };
 
   return (
@@ -40,10 +39,6 @@ const TextInput = ({ isValidEmail, setIsValidEmail,setEmail }) => {
         placeholder="Enter your email"
         onChange={validateEmail}
       />
-
-      {/* <p className={`error`}>
-        {!isValidEmail  && 'Please enter a valid email!'}
-      </p> */}
     </Box>
   );
 };
