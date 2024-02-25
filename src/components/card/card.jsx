@@ -41,6 +41,7 @@ const Card = ({ setdebtTool }) => {
 
   return (
     <div>
+     
       <ContactCardWrapper>
         {cardData.map((item, index) => (
           <ContactCard

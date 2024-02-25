@@ -5,31 +5,35 @@ import { Box } from "@mui/material";
 
 const StyledButton = styled(Button)(({ theme, isValidEmail }) => ({
   backgroundColor: isValidEmail ? "#3300FF" : "#EEF0F9",
-  color:isValidEmail ? "#fff" : "#616A7C",
+  color: isValidEmail ? "#fff" : "#616A7C",
   fontSize: "18px",
   textTransform: "initial",
   fontWeight: 700,
   width: "350px",
   "&:hover": {
-  backgroundColor: isValidEmail ? "#3300FF" : "#EEF0F9",
-    
+    backgroundColor: isValidEmail ? "#3300FF" : "#EEF0F9",
   },
   [theme.breakpoints.down("sm")]: {
     width: "90%",
   },
 }));
 
-const MainButton = ({ children, submitData, isValidEmail,debtTool }) => {
-  console.log("isvalid0", isValidEmail)
+const MainButton = ({ children, submitData, isValidEmail }) => {
   return (
-    <Box   style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'column',
-      width: '100%',
-    }}>
-      <StyledButton disabled={!isValidEmail} isValidEmail={isValidEmail} onClick={submitData}   >
+    <Box
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        width: "100%",
+      }}
+    >
+      <StyledButton
+        disabled={!isValidEmail}
+        isValidEmail={isValidEmail}
+        onClick={submitData}
+      >
         {children}
       </StyledButton>
     </Box>
