@@ -13,7 +13,10 @@ const StyledButton = styled(Button)(({ theme, isValidEmail }) => ({
   "&:hover": {
     backgroundColor: isValidEmail ? "#3300FF" : "#EEF0F9",
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down(400)]: {
+    width: "330px",
+  },
+  [theme.breakpoints.down(340)]: {
     width: "90%",
   },
 }));

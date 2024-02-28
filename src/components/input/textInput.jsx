@@ -10,7 +10,10 @@ const StyledInput = styled(TextField)(({ theme }) => ({
   "& .error": {
     color: "red",
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down(400)]: {
+    width: "330px",
+  },
+  [theme.breakpoints.down(340)]: {
     width: "90%",
   },
 }));
